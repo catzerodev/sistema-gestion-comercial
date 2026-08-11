@@ -1,0 +1,37 @@
+from django.db import models
+from clientes.models import Cliente
+from proveedores.models import Proveedor
+
+
+class Documento(models.Model):
+    tipo = models.CharField(max_length=20)
+    numero = models.CharField(max_length=30)
+    fecha = models.DateField()
+
+    cliente = models.ForeignKey(
+        Cliente,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True
+    )
+
+    proveedor = models.ForeignKey(
+        Proveedor,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True
+    )
+
+    archivo = models.CharField(max_length=255, blank=True, null=True)
+    observaciones = models.TextField(blank=True, null=True)
+
+    created_by_id = models.BigIntegerField(blank=True, null=True)
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        db_table = 'documentos'
+
+    def __str__(self):
+        return f"{self.tipo} - {self.numero}"
