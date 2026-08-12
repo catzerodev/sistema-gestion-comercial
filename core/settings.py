@@ -1,5 +1,6 @@
 from pathlib import Path
 import os
+from datetime import timedelta
 from dotenv import load_dotenv
 
 
@@ -7,15 +8,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 load_dotenv()
 
-
-
 SECRET_KEY = os.getenv('SECRET_KEY')
-
 
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 
 INSTALLED_APPS = [
@@ -34,16 +31,28 @@ INSTALLED_APPS = [
     'productos',
     'documentos',
     'detalle_documento',
+    'usuarios',
 ]
 
 REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
 }
 
 SPECTACULAR_SETTINGS = {
     'TITLE': 'Sistema de Gestión Comercial API',
     'DESCRIPTION': 'API REST para el sistema de gestión comercial',
     'VERSION': '1.0.0',
+}
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
 }
 
 
