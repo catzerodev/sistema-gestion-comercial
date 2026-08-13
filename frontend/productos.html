@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Proveedores - Sistema Comercial</title>
+    <title>Productos - Sistema Comercial</title>
 
     <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -20,8 +20,8 @@
             <nav>
                 <a href="index.html">🏠 Inicio</a>
                 <a href="clientes.html">👥 Clientes</a>
-                <a href="proveedores.html" class="active">🏭 Proveedores</a>
-                <a href="productos.html">📦 Productos</a>
+                <a href="proveedores.html">🏭 Proveedores</a>
+                <a href="productos.html" class="active">📦 Productos</a>
                 <a href="documentos.html">🧾 Documentos</a>
             </nav>
 
@@ -34,7 +34,7 @@
 
             <header class="topbar">
 
-                <h1>Proveedores</h1>
+                <h1>Productos</h1>
 
                 <div class="user-info">
                     👤 Usuario
@@ -47,10 +47,10 @@
 
                 <div class="welcome">
 
-                    <h2>Gestión de Proveedores</h2>
+                    <h2>Gestión de Productos</h2>
 
                     <p>
-                        Consulta y administra los proveedores registrados.
+                        Consulta y administra los productos registrados.
                     </p>
 
                 </div>
@@ -61,15 +61,18 @@
                     <div class="section-header">
 
                         <div>
-                            <h2>Proveedores registrados</h2>
+
+                            <h2>Productos registrados</h2>
 
                             <p class="section-description">
-                                Lista de proveedores registrados en el sistema.
+                                Lista de productos registrados en el sistema.
                             </p>
+
                         </div>
 
-                        <button id="btn-nuevo-proveedor">
-                            ➕ Nuevo proveedor
+
+                        <button id="btn-nuevo-producto">
+                            ➕ Nuevo producto
                         </button>
 
                     </div>
@@ -78,29 +81,43 @@
                     <!-- FORMULARIO -->
 
                     <div
-                        id="proveedor-form-container"
+                        id="producto-form-container"
                         class="form-container"
                         style="display: none;"
                     >
 
-                        <h3 id="proveedor-form-title">
-                            Nuevo proveedor
+                        <h3 id="producto-form-title">
+                            Nuevo producto
                         </h3>
 
 
-                        <form id="proveedor-form">
+                        <form id="producto-form">
 
                             <div class="form-grid">
 
                                 <div class="form-group">
 
-                                    <label for="proveedor-razon_social">
-                                        Razón social
+                                    <label for="producto-codigo">
+                                        Código
                                     </label>
 
                                     <input
                                         type="text"
-                                        id="proveedor-razon_social"
+                                        id="producto-codigo"
+                                    >
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <label for="producto-nombre">
+                                        Nombre
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="producto-nombre"
                                         required
                                     >
 
@@ -109,14 +126,27 @@
 
                                 <div class="form-group">
 
-                                    <label for="proveedor-ruc">
-                                        RUC
+                                    <label for="producto-marca">
+                                        Marca
                                     </label>
 
                                     <input
                                         type="text"
-                                        id="proveedor-ruc"
-                                        maxlength="11"
+                                        id="producto-marca"
+                                    >
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <label for="producto-unidad">
+                                        Unidad
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="producto-unidad"
                                         required
                                     >
 
@@ -125,42 +155,14 @@
 
                                 <div class="form-group">
 
-                                    <label for="proveedor-telefono">
-                                        Teléfono
+                                    <label for="producto-descripcion">
+                                        Descripción
                                     </label>
 
-                                    <input
-                                        type="text"
-                                        id="proveedor-telefono"
-                                    >
-
-                                </div>
-
-
-                                <div class="form-group">
-
-                                    <label for="proveedor-correo">
-                                        Correo
-                                    </label>
-
-                                    <input
-                                        type="email"
-                                        id="proveedor-correo"
-                                    >
-
-                                </div>
-
-
-                                <div class="form-group">
-
-                                    <label for="proveedor-direccion">
-                                        Dirección
-                                    </label>
-
-                                    <input
-                                        type="text"
-                                        id="proveedor-direccion"
-                                    >
+                                    <textarea
+                                        id="producto-descripcion"
+                                        rows="4"
+                                    ></textarea>
 
                                 </div>
 
@@ -172,15 +174,15 @@
                                 <button
                                     type="submit"
                                     class="btn-save"
-                                    id="btn-guardar-proveedor"
+                                    id="btn-guardar-producto"
                                 >
-                                    💾 Guardar proveedor
+                                    💾 Guardar producto
                                 </button>
 
 
                                 <button
                                     type="button"
-                                    id="btn-cancelar-proveedor"
+                                    id="btn-cancelar-producto"
                                     class="btn-cancel"
                                 >
                                     Cancelar
@@ -189,7 +191,7 @@
                             </div>
 
 
-                            <p id="proveedor-form-message"></p>
+                            <p id="producto-form-message"></p>
 
                         </form>
 
@@ -206,22 +208,22 @@
 
                                 <tr>
                                     <th>ID</th>
-                                    <th>Razón social</th>
-                                    <th>RUC</th>
-                                    <th>Teléfono</th>
-                                    <th>Correo</th>
-                                    <th>Dirección</th>
+                                    <th>Código</th>
+                                    <th>Nombre</th>
+                                    <th>Marca</th>
+                                    <th>Unidad</th>
+                                    <th>Descripción</th>
                                     <th>Acciones</th>
                                 </tr>
 
                             </thead>
 
 
-                            <tbody id="proveedores-container">
+                            <tbody id="productos-container">
 
                                 <tr>
                                     <td colspan="7">
-                                        Cargando proveedores...
+                                        Cargando productos...
                                     </td>
                                 </tr>
 
@@ -240,7 +242,7 @@
     </div>
 
     <script src="common.js"></script>
-    <script src="proveedores.js"></script>
+    <script src="productos.js"></script>
 
 </body>
 </html>
