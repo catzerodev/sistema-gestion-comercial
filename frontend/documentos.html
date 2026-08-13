@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Documentos - Sistema Comercial</title>
+
+    <link
+        rel="stylesheet"
+        href="css/styles.css"
+    >
+
+</head>
+
+
+<body>
+
+    <div class="app">
+
+
+        <!-- BARRA LATERAL -->
+
+        <aside class="sidebar">
+
+            <h2>Sistema Comercial</h2>
+
+
+            <nav>
+
+                <a href="index.html">
+                    🏠 Inicio
+                </a>
+
+                <a href="clientes.html">
+                    👥 Clientes
+                </a>
+
+                <a href="proveedores.html">
+                    🏭 Proveedores
+                </a>
+
+                <a href="productos.html">
+                    📦 Productos
+                </a>
+
+                <a
+                    href="documentos.html"
+                    class="active"
+                >
+                    🧾 Documentos
+                </a>
+
+            </nav>
+
+
+            <a
+                href="#"
+                class="logout"
+            >
+                🚪 Cerrar sesión
+            </a>
+
+        </aside>
+
+
+        <!-- CONTENIDO PRINCIPAL -->
+
+        <main class="main-content">
+
+
+            <header class="topbar">
+
+                <h1>Documentos</h1>
+
+                <div class="user-info">
+                    👤 Usuario
+                </div>
+
+            </header>
+
+
+            <section class="dashboard">
+
+
+                <!-- BIENVENIDA -->
+
+                <div class="welcome">
+
+                    <h2>
+                        Gestión de Documentos
+                    </h2>
+
+                    <p>
+                        Consulta y administra los documentos
+                        registrados en el sistema.
+                    </p>
+
+                </div>
+
+
+                <!-- SECCIÓN DE DOCUMENTOS -->
+
+                <div class="clients-section">
+
+
+                    <div class="section-header">
+
+                        <div>
+
+                            <h2>
+                                Documentos registrados
+                            </h2>
+
+                            <p class="section-description">
+                                Lista de facturas, boletas y
+                                otros documentos registrados.
+                            </p>
+
+                        </div>
+
+
+                        <button id="btn-nuevo-documento">
+                            ➕ Nuevo documento
+                        </button>
+
+                    </div>
+
+
+                    <!-- FORMULARIO -->
+
+                    <div
+                        id="documento-form-container"
+                        class="form-container"
+                        style="display: none;"
+                    >
+
+
+                        <h3 id="documento-form-title">
+                            Nuevo documento
+                        </h3>
+
+
+                        <form id="documento-form">
+
+
+                            <div class="form-grid">
+
+
+                                <!-- TIPO -->
+
+                                <div class="form-group">
+
+                                    <label for="documento-tipo">
+                                        Tipo de documento
+                                    </label>
+
+                                    <select
+                                        id="documento-tipo"
+                                        required
+                                    >
+
+                                        <option value="">
+                                            Seleccionar
+                                        </option>
+
+                                        <option value="FACTURA">
+                                            Factura
+                                        </option>
+
+                                        <option value="BOLETA">
+                                            Boleta
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+
+                                <!-- NUMERO -->
+
+                                <div class="form-group">
+
+                                    <label for="documento-numero">
+                                        Número
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="documento-numero"
+                                        required
+                                    >
+
+                                </div>
+
+
+                                <!-- FECHA -->
+
+                                <div class="form-group">
+
+                                    <label for="documento-fecha">
+                                        Fecha
+                                    </label>
+
+                                    <input
+                                        type="date"
+                                        id="documento-fecha"
+                                        required
+                                    >
+
+                                </div>
+
+
+                                <!-- MONEDA -->
+
+                                <div class="form-group">
+
+                                    <label for="documento-moneda">
+                                        Moneda
+                                    </label>
+
+                                    <select
+                                        id="documento-moneda"
+                                        required
+                                    >
+
+                                        <option value="PEN">
+                                            PEN - Soles
+                                        </option>
+
+                                        <option value="USD">
+                                            USD - Dólares
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+
+                                <!-- CLIENTE -->
+
+                                <div class="form-group">
+
+                                    <label for="documento-cliente">
+                                        Cliente
+                                    </label>
+
+                                    <select
+                                        id="documento-cliente"
+                                    >
+
+                                        <option value="">
+                                            Sin cliente
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+
+                                <!-- PROVEEDOR -->
+
+                                <div class="form-group">
+
+                                    <label for="documento-proveedor">
+                                        Proveedor
+                                    </label>
+
+                                    <select
+                                        id="documento-proveedor"
+                                    >
+
+                                        <option value="">
+                                            Sin proveedor
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+
+                                <!-- OBSERVACIONES -->
+
+                                <div class="form-group">
+
+                                    <label for="documento-observaciones">
+                                        Observaciones
+                                    </label>
+
+                                    <textarea
+                                        id="documento-observaciones"
+                                        rows="4"
+                                    ></textarea>
+
+                                </div>
+
+
+                            </div>
+
+
+                            <!-- BOTONES -->
+
+                            <div class="form-actions">
+
+
+                                <button
+                                    type="submit"
+                                    class="btn-save"
+                                    id="btn-guardar-documento"
+                                >
+                                    💾 Guardar documento
+                                </button>
+
+
+                                <button
+                                    type="button"
+                                    id="btn-cancelar-documento"
+                                    class="btn-cancel"
+                                >
+                                    Cancelar
+                                </button>
+
+
+                            </div>
+
+
+                            <p id="documento-form-message"></p>
+
+
+                        </form>
+
+
+                    </div>
+
+
+                    <!-- TABLA -->
+
+                    <div class="table-container">
+
+
+                        <table class="clients-table">
+
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>ID</th>
+
+                                    <th>Tipo</th>
+
+                                    <th>Número</th>
+
+                                    <th>Fecha</th>
+
+                                    <th>Moneda</th>
+
+                                    <th>Cliente</th>
+
+                                    <th>Proveedor</th>
+
+                                    <th>Acciones</th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="documentos-container">
+
+                                <tr>
+
+                                    <td colspan="8">
+                                        Cargando documentos...
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+
+                        </table>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </section>
+
+
+        </main>
+
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="common.js"></script>
+
+    <script src="documentos.js"></script>
+
+
+</body>
+
+</html>
