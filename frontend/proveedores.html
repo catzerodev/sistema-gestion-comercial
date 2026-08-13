@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Proveedores - Sistema Comercial</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+    <div class="app">
+
+        <aside class="sidebar">
+
+            <h2>Sistema Comercial</h2>
+
+            <nav>
+                <a href="index.html">🏠 Inicio</a>
+                <a href="clientes.html">👥 Clientes</a>
+                <a href="proveedores.html" class="active">🏭 Proveedores</a>
+                <a href="#">📦 Productos</a>
+                <a href="#">🧾 Documentos</a>
+            </nav>
+
+            <a href="#" class="logout">🚪 Cerrar sesión</a>
+
+        </aside>
+
+
+        <main class="main-content">
+
+            <header class="topbar">
+
+                <h1>Proveedores</h1>
+
+                <div class="user-info">
+                    👤 Usuario
+                </div>
+
+            </header>
+
+
+            <section class="dashboard">
+
+                <div class="welcome">
+
+                    <h2>Gestión de Proveedores</h2>
+
+                    <p>
+                        Consulta y administra los proveedores registrados.
+                    </p>
+
+                </div>
+
+
+                <div class="clients-section">
+
+                    <div class="section-header">
+
+                        <div>
+                            <h2>Proveedores registrados</h2>
+
+                            <p class="section-description">
+                                Lista de proveedores registrados en el sistema.
+                            </p>
+                        </div>
+
+                        <button id="btn-nuevo-proveedor">
+                            ➕ Nuevo proveedor
+                        </button>
+
+                    </div>
+
+
+                    <!-- FORMULARIO -->
+
+                    <div
+                        id="proveedor-form-container"
+                        class="form-container"
+                        style="display: none;"
+                    >
+
+                        <h3 id="proveedor-form-title">
+                            Nuevo proveedor
+                        </h3>
+
+
+                        <form id="proveedor-form">
+
+                            <div class="form-grid">
+
+                                <div class="form-group">
+
+                                    <label for="proveedor-razon_social">
+                                        Razón social
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="proveedor-razon_social"
+                                        required
+                                    >
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <label for="proveedor-ruc">
+                                        RUC
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="proveedor-ruc"
+                                        maxlength="11"
+                                        required
+                                    >
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <label for="proveedor-telefono">
+                                        Teléfono
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="proveedor-telefono"
+                                    >
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <label for="proveedor-correo">
+                                        Correo
+                                    </label>
+
+                                    <input
+                                        type="email"
+                                        id="proveedor-correo"
+                                    >
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <label for="proveedor-direccion">
+                                        Dirección
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="proveedor-direccion"
+                                    >
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="form-actions">
+
+                                <button
+                                    type="submit"
+                                    class="btn-save"
+                                    id="btn-guardar-proveedor"
+                                >
+                                    💾 Guardar proveedor
+                                </button>
+
+
+                                <button
+                                    type="button"
+                                    id="btn-cancelar-proveedor"
+                                    class="btn-cancel"
+                                >
+                                    Cancelar
+                                </button>
+
+                            </div>
+
+
+                            <p id="proveedor-form-message"></p>
+
+                        </form>
+
+                    </div>
+
+
+                    <!-- TABLA -->
+
+                    <div class="table-container">
+
+                        <table class="clients-table">
+
+                            <thead>
+
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Razón social</th>
+                                    <th>RUC</th>
+                                    <th>Teléfono</th>
+                                    <th>Correo</th>
+                                    <th>Dirección</th>
+                                    <th>Acciones</th>
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="proveedores-container">
+
+                                <tr>
+                                    <td colspan="7">
+                                        Cargando proveedores...
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <script src="app.js"></script>
+
+</body>
+</html>
