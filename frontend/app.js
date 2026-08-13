@@ -225,7 +225,6 @@ if (clienteForm) {
             return;
         }
 
-
         const cliente = {
 
             razon_social:
@@ -245,16 +244,26 @@ if (clienteForm) {
 
         };
 
-
-        clienteFormMessage.textContent = 'Guardando cliente...';
-
+        clienteFormMessage.textContent = 'Guardando...';
 
         try {
 
+            let url = 'http://127.0.0.1:8000/api/clientes/';
+            let method = 'POST';
+
+            if (clienteEditandoId !== null) {
+
+                url =
+                    `http://127.0.0.1:8000/api/clientes/${clienteEditandoId}/`;
+
+                method = 'PATCH';
+
+            }
+
             const response = await fetch(
-                'http://127.0.0.1:8000/api/clientes/',
+                url,
                 {
-                    method: 'POST',
+                    method: method,
 
                     headers: {
                         'Authorization': `Bearer ${token}`,
@@ -265,20 +274,32 @@ if (clienteForm) {
                 }
             );
 
-
             const data = await response.json();
-
 
             if (response.ok) {
 
-                clienteFormMessage.textContent =
-                    '✅ Cliente creado correctamente.';
+                if (clienteEditandoId !== null) {
+
+                    clienteFormMessage.textContent =
+                        '✅ Cliente actualizado correctamente.';
+
+                } else {
+
+                    clienteFormMessage.textContent =
+                        '✅ Cliente creado correctamente.';
+
+                }
 
                 clienteForm.reset();
 
                 clienteFormContainer.style.display = 'none';
 
                 btnNuevoCliente.style.display = 'block';
+
+                clienteEditandoId = null;
+
+                document.getElementById('form-title').textContent =
+                    'Nuevo cliente';
 
                 cargarClientes();
 
@@ -287,11 +308,9 @@ if (clienteForm) {
                 console.error(data);
 
                 clienteFormMessage.textContent =
-                    data.detail ||
-                    'No se pudo crear el cliente.';
+                    JSON.stringify(data);
 
             }
-
 
         } catch (error) {
 
@@ -382,6 +401,99 @@ document.addEventListener('click', async function (event) {
         console.error(error);
 
         alert('No se pudo conectar con el servidor.');
+
+    }
+
+});
+
+// =========================
+// EDITAR CLIENTE
+// =========================
+
+let clienteEditandoId = null;
+
+document.addEventListener('click', async function (event) {
+
+    const button = event.target.closest('.btn-edit');
+
+    if (!button) {
+        return;
+    }
+
+    const clienteId = button.dataset.id;
+
+    const token = localStorage.getItem('access_token');
+
+    if (!token) {
+        window.location.href = 'login.html';
+        return;
+    }
+
+    try {
+
+        const response = await fetch(
+            `http://127.0.0.1:8000/api/clientes/${clienteId}/`,
+            {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                }
+            }
+        );
+
+        if (response.status === 401) {
+
+            localStorage.removeItem('access_token');
+            localStorage.removeItem('refresh_token');
+
+            window.location.href = 'login.html';
+
+            return;
+        }
+
+        if (!response.ok) {
+            throw new Error(`Error HTTP: ${response.status}`);
+        }
+
+        const cliente = await response.json();
+
+        clienteEditandoId = cliente.id;
+
+        document.getElementById('razon_social').value =
+            cliente.razon_social;
+
+        document.getElementById('ruc').value =
+            cliente.ruc;
+
+        document.getElementById('telefono').value =
+            cliente.telefono;
+
+        document.getElementById('correo').value =
+            cliente.correo;
+
+        document.getElementById('direccion').value =
+            cliente.direccion;
+
+        document.getElementById('form-title').textContent =
+            'Editar cliente';
+
+        clienteFormContainer.style.display = 'block';
+
+        btnNuevoCliente.style.display = 'none';
+
+        clienteFormMessage.textContent = '';
+
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+
+    } catch (error) {
+
+        console.error(error);
+
+        alert('No se pudo cargar el cliente.');
 
     }
 
