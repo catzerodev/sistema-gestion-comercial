@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Clientes - Sistema Comercial</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+</head>
+
+<body>
+
+    <div class="app">
+
+        <aside class="sidebar">
+
+            <h2>Sistema Comercial</h2>
+
+            <nav>
+                <a href="index.html">
+                    <i data-lucide="house"></i>
+                    <span>Inicio</span>
+                </a>
+                <a href="clientes.html" class="active">
+                    <i data-lucide="users"></i>
+                    <span>Clientes</span>
+                </a>
+                <a href="proveedores.html">
+                    <i data-lucide="building-2"></i>
+                    <span>Proveedores</span>
+                </a>
+                <a href="productos.html">
+                    <i data-lucide="package"></i>
+                    <span>Productos</span>
+                </a>
+                <a href="documentos.html">
+                    <i data-lucide="file-text"></i>
+                    <span>Documentos</span>
+                </a>
+            </nav>
+
+        <div class="sidebar-footer">
+                <div class="sidebar-user">
+                    <i data-lucide="user"></i>
+                    <span>Usuario</span>
+                </div>
+
+            <a 
+                href="#"
+                 class="logout"
+            >
+                <i data-lucide="power"></i>
+                
+            </a>
+        </div>
+
+        </aside>
+
+
+        <main class="main-content">
+
+
+
+
+            <section class="dashboard">
+
+                <div class="welcome">
+
+                    <h2>Gestión de Clientes</h2>
+
+                    <p>
+                        Consulta y administra los clientes registrados.
+                    </p>
+
+                </div>
+
+
+                <div class="clients-section">
+
+                    <div class="section-header">
+
+                        <div>
+                            <h2>Clientes registrados</h2>
+                            <p class="section-description">
+                                Lista de clientes registrados en el sistema.
+                            </p>
+                        </div>
+
+
+
+                        <button id="btn-nuevo-cliente">
+                            ➕ Nuevo cliente
+                        </button>
+
+                    </div>
+                    <div id="cliente-form-container" class="form-container" style="display: none;">
+
+                    <h3 id="form-title">Nuevo cliente</h3>
+                    
+                    <form id="cliente-form">
+
+                        <div class="form-grid">
+
+                            <div class="form-group">
+                                <label for="razon_social">Razón social</label>
+                                <input
+                                    type="text"
+                                    id="razon_social"
+                                    required
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="ruc">RUC</label>
+                                <input
+                                    type="text"
+                                    id="ruc"
+                                    required
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="telefono">Teléfono</label>
+                                <input
+                                    type="text"
+                                    id="telefono"
+                                    required
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="correo">Correo</label>
+                                <input
+                                    type="email"
+                                    id="correo"
+                                    required
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="direccion">Dirección</label>
+                                <input
+                                    type="text"
+                                    id="direccion"
+                                    required
+                                >
+                            </div>
+
+                        </div>
+
+                        <div class="form-actions">
+
+                            <button type="submit" class="btn-save" id="btn-guardar-cliente">
+                             💾 Guardar cliente
+                            </button>
+
+                            <button
+                                type="button"
+                                id="btn-cancelar-cliente"
+                                class="btn-cancel"
+                            >
+                                Cancelar
+                            </button>
+
+                        </div>
+
+                        <p id="cliente-form-message"></p>
+
+                    </form>
+
+                </div>
+
+                    <div class="table-container">
+
+                        <table class="clients-table">
+
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Razón social</th>
+                                    <th>RUC</th>
+                                    <th>Teléfono</th>
+                                    <th>Correo</th>
+                                    <th>Dirección</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="clientes-container">
+                                <tr>
+                                    <td colspan="7">
+                                        Cargando clientes...
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="common.js"></script>
+    <script src="clientes.js"></script>
+    <script>lucide.createIcons();</script>
+
+</body>
+</html>

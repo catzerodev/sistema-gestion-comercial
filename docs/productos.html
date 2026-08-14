@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Productos - Sistema Comercial</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+</head>
+
+<body>
+
+    <div class="app">
+
+        <aside class="sidebar">
+
+            <h2>Sistema Comercial</h2>
+
+            <nav>
+                <a href="index.html">
+                    <i data-lucide="house"></i>
+                    <span>Inicio</span>
+                </a>
+                <a href="clientes.html">
+                    <i data-lucide="users"></i>
+                    <span>Clientes</span>
+                </a>
+                <a href="proveedores.html">
+                    <i data-lucide="building-2"></i>
+                    <span>Proveedores</span>
+                </a>
+                <a href="productos.html" class="active">
+                    <i data-lucide="package"></i>
+                    <span>Productos</span>
+                </a>
+                <a href="documentos.html">
+                    <i data-lucide="file-text"></i>
+                    <span>Documentos</span>
+                </a>
+            </nav>
+
+        <div class="sidebar-footer">
+                <div class="sidebar-user">
+                    <i data-lucide="user"></i>
+                    <span>Usuario</span>
+                </div>
+
+            <a 
+                href="#"
+                 class="logout"
+            >
+                <i data-lucide="power"></i>
+                
+            </a>
+        </div>
+
+        </aside>
+
+
+        <main class="main-content">
+
+
+            <section class="dashboard">
+
+                <div class="welcome">
+
+                    <h2>Gestión de Productos</h2>
+
+                    <p>
+                        Consulta y administra los productos registrados.
+                    </p>
+
+                </div>
+
+
+                <div class="clients-section">
+
+                    <div class="section-header">
+
+                        <div>
+
+                            <h2>Productos registrados</h2>
+
+                            <p class="section-description">
+                                Lista de productos registrados en el sistema.
+                            </p>
+
+                        </div>
+
+
+                        <button id="btn-nuevo-producto">
+                            ➕ Nuevo producto
+                        </button>
+
+                    </div>
+
+
+                    <!-- FORMULARIO -->
+
+                    <div
+                        id="producto-form-container"
+                        class="form-container"
+                        style="display: none;"
+                    >
+
+                        <h3 id="producto-form-title">
+                            Nuevo producto
+                        </h3>
+
+
+                        <form id="producto-form">
+
+                            <div class="form-grid">
+
+                                <div class="form-group">
+
+                                    <label for="producto-codigo">
+                                        Código
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="producto-codigo"
+                                    >
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <label for="producto-nombre">
+                                        Nombre
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="producto-nombre"
+                                        required
+                                    >
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <label for="producto-marca">
+                                        Marca
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="producto-marca"
+                                    >
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <label for="producto-unidad">
+                                        Unidad
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="producto-unidad"
+                                        required
+                                    >
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <label for="producto-descripcion">
+                                        Descripción
+                                    </label>
+
+                                    <textarea
+                                        id="producto-descripcion"
+                                        rows="4"
+                                    ></textarea>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="form-actions">
+
+                                <button
+                                    type="submit"
+                                    class="btn-save"
+                                    id="btn-guardar-producto"
+                                >
+                                    💾 Guardar producto
+                                </button>
+
+
+                                <button
+                                    type="button"
+                                    id="btn-cancelar-producto"
+                                    class="btn-cancel"
+                                >
+                                    Cancelar
+                                </button>
+
+                            </div>
+
+
+                            <p id="producto-form-message"></p>
+
+                        </form>
+
+                    </div>
+
+
+                    <!-- TABLA -->
+
+                    <div class="table-container">
+
+                        <table class="clients-table">
+
+                            <thead>
+
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Código</th>
+                                    <th>Nombre</th>
+                                    <th>Marca</th>
+                                    <th>Unidad</th>
+                                    <th>Descripción</th>
+                                    <th>Acciones</th>
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="productos-container">
+
+                                <tr>
+                                    <td colspan="7">
+                                        Cargando productos...
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="common.js"></script>
+    <script src="productos.js"></script>
+    <script>lucide.createIcons();</script>
+
+</body>
+</html>
