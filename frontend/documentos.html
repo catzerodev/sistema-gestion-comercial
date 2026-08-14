@@ -16,7 +16,7 @@
         rel="stylesheet"
         href="css/styles.css"
     >
-
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 
 
@@ -25,71 +25,71 @@
     <div class="app">
 
 
-        <!-- BARRA LATERAL -->
+        <!-- =========================
+             BARRA LATERAL
+        ========================== -->
 
         <aside class="sidebar">
 
             <h2>Sistema Comercial</h2>
 
-
             <nav>
-
                 <a href="index.html">
-                    🏠 Inicio
+                    <i data-lucide="house"></i>
+                    <span>Inicio</span>
                 </a>
-
                 <a href="clientes.html">
-                    👥 Clientes
+                    <i data-lucide="users"></i>
+                    <span>Clientes</span>
                 </a>
-
                 <a href="proveedores.html">
-                    🏭 Proveedores
+                    <i data-lucide="building-2"></i>
+                    <span>Proveedores</span>
                 </a>
-
                 <a href="productos.html">
-                    📦 Productos
+                    <i data-lucide="package"></i>
+                    <span>Productos</span>
                 </a>
-
-                <a
-                    href="documentos.html"
-                    class="active"
-                >
-                    🧾 Documentos
+                <a href="documentos.html" class="active">
+                    <i data-lucide="file-text"></i>
+                    <span>Documentos</span>
                 </a>
-
             </nav>
 
 
-            <a
-                href="#"
-                class="logout"
-            >
-                🚪 Cerrar sesión
-            </a>
+        <div class="sidebar-footer">
+                <div class="sidebar-user">
+                    <i data-lucide="user"></i>
+                    <span>Usuario</span>
+                </div>
 
+            <a 
+                href="#"
+                 class="logout"
+            >
+                <i data-lucide="power"></i>
+                
+            </a>
+        </div>
         </aside>
 
 
-        <!-- CONTENIDO PRINCIPAL -->
+
+        <!-- =========================
+             CONTENIDO PRINCIPAL
+        ========================== -->
 
         <main class="main-content">
 
 
-            <header class="topbar">
-
-                <h1>Documentos</h1>
-
-                <div class="user-info">
-                    👤 Usuario
-                </div>
-
-            </header>
-
+            
 
             <section class="dashboard">
 
 
-                <!-- BIENVENIDA -->
+                <!-- =========================
+                     PRESENTACIÓN
+                ========================== -->
 
                 <div class="welcome">
 
@@ -98,14 +98,148 @@
                     </h2>
 
                     <p>
-                        Consulta y administra los documentos
-                        registrados en el sistema.
+                        Consulta y administra las facturas registradas en el sistema.
                     </p>
 
                 </div>
 
+                <!-- =========================
+                    VISOR GLOBAL DE PRODUCTOS
+                ========================== -->
 
-                <!-- SECCIÓN DE DOCUMENTOS -->
+<section class="product-viewer">
+
+    <div class="product-viewer-header">
+
+        <div>
+
+            <span class="viewer-eyebrow">
+                🔎 CONSULTA COMERCIAL
+            </span>
+
+            <h2>
+                Visor de productos
+            </h2>
+
+            <p>
+                Consulta compras y ventas de cualquier producto
+                registrado en las facturas.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- BUSCADOR -->
+
+    <div class="product-search-box">
+
+        <div class="search-field">
+
+            <label for="visor-producto">
+                Buscar producto
+            </label>
+
+            <div class="search-input-wrapper">
+
+                <span class="search-icon">
+                    🔍
+                </span>
+
+                <input
+                    type="text"
+                    id="visor-producto"
+                    placeholder="Ej. cable flexible, terminal, interruptor..."
+                    autocomplete="off"
+                >
+
+            </div>
+
+        </div>
+
+
+        <div class="search-filter">
+
+            <label for="visor-operacion">
+                Operación
+            </label>
+
+            <select id="visor-operacion">
+
+                <option value="">
+                    Todas
+                </option>
+
+                <option value="COMPRA">
+                    🛒 Compras
+                </option>
+
+                <option value="VENTA">
+                    💰 Ventas
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="search-action">
+
+            <button
+                type="button"
+                id="btn-buscar-producto"
+            >
+                🔎 Buscar
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- MENSAJE INICIAL -->
+
+    <div
+        id="visor-productos-vacio"
+        class="viewer-empty"
+    >
+
+        <div class="viewer-empty-icon">
+            📦
+        </div>
+
+        <h3>
+            Busca un producto
+        </h3>
+
+        <p>
+            Escribe el nombre de un producto para consultar
+            sus compras y ventas.
+        </p>
+
+    </div>
+
+
+    <!-- RESULTADOS -->
+
+    <div
+        id="visor-productos-resultados"
+        class="viewer-results"
+    >
+
+        <!--
+            Los resultados serán generados
+            dinámicamente desde documentos.js.
+        -->
+
+    </div>
+
+</section>
+
+                <!-- =========================
+                     DOCUMENTOS
+                ========================== -->
 
                 <div class="clients-section">
 
@@ -119,21 +253,25 @@
                             </h2>
 
                             <p class="section-description">
-                                Lista de facturas, boletas y
-                                otros documentos registrados.
+                                Lista de facturas de compra y venta registradas.
                             </p>
 
                         </div>
 
 
-                        <button id="btn-nuevo-documento">
-                            ➕ Nuevo documento
+                        <button
+                            id="btn-nuevo-documento"
+                        >
+                            ➕ Nueva factura
                         </button>
 
                     </div>
 
 
-                    <!-- FORMULARIO -->
+
+                    <!-- =========================
+                         FORMULARIO
+                    ========================== -->
 
                     <div
                         id="documento-form-container"
@@ -142,13 +280,22 @@
                     >
 
 
-                        <h3 id="documento-form-title">
-                            Nuevo documento
+                        <h3
+                            id="documento-form-title"
+                        >
+                            Nueva factura
                         </h3>
 
 
-                        <form id="documento-form">
 
+                        <form
+                            id="documento-form"
+                        >
+
+
+                            <!-- =========================
+                                 DATOS DEL DOCUMENTO
+                            ========================== -->
 
                             <div class="form-grid">
 
@@ -157,25 +304,20 @@
 
                                 <div class="form-group">
 
-                                    <label for="documento-tipo">
-                                        Tipo de documento
+                                    <label
+                                        for="documento-tipo"
+                                    >
+                                        Tipo
                                     </label>
+
 
                                     <select
                                         id="documento-tipo"
                                         required
                                     >
 
-                                        <option value="">
-                                            Seleccionar
-                                        </option>
-
                                         <option value="FACTURA">
-                                            Factura
-                                        </option>
-
-                                        <option value="BOLETA">
-                                            Boleta
+                                            FACTURA
                                         </option>
 
                                     </select>
@@ -183,30 +325,69 @@
                                 </div>
 
 
-                                <!-- NUMERO -->
+
+                                <!-- OPERACIÓN -->
 
                                 <div class="form-group">
 
-                                    <label for="documento-numero">
+                                    <label
+                                        for="documento-operacion"
+                                    >
+                                        Operación
+                                    </label>
+
+
+                                    <select
+                                        id="documento-operacion"
+                                        required
+                                    >
+
+                                        <option value="COMPRA">
+                                            🛒 COMPRA
+                                        </option>
+
+                                        <option value="VENTA">
+                                            💰 VENTA
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+
+
+                                <!-- NÚMERO -->
+
+                                <div class="form-group">
+
+                                    <label
+                                        for="documento-numero"
+                                    >
                                         Número
                                     </label>
+
 
                                     <input
                                         type="text"
                                         id="documento-numero"
+                                        placeholder="F001-00074043"
                                         required
                                     >
 
                                 </div>
 
 
+
                                 <!-- FECHA -->
 
                                 <div class="form-group">
 
-                                    <label for="documento-fecha">
+                                    <label
+                                        for="documento-fecha"
+                                    >
                                         Fecha
                                     </label>
+
 
                                     <input
                                         type="date"
@@ -217,17 +398,20 @@
                                 </div>
 
 
+
                                 <!-- MONEDA -->
 
                                 <div class="form-group">
 
-                                    <label for="documento-moneda">
+                                    <label
+                                        for="documento-moneda"
+                                    >
                                         Moneda
                                     </label>
 
+
                                     <select
                                         id="documento-moneda"
-                                        required
                                     >
 
                                         <option value="PEN">
@@ -243,13 +427,17 @@
                                 </div>
 
 
+
                                 <!-- CLIENTE -->
 
                                 <div class="form-group">
 
-                                    <label for="documento-cliente">
+                                    <label
+                                        for="documento-cliente"
+                                    >
                                         Cliente
                                     </label>
+
 
                                     <select
                                         id="documento-cliente"
@@ -264,13 +452,17 @@
                                 </div>
 
 
+
                                 <!-- PROVEEDOR -->
 
                                 <div class="form-group">
 
-                                    <label for="documento-proveedor">
+                                    <label
+                                        for="documento-proveedor"
+                                    >
                                         Proveedor
                                     </label>
+
 
                                     <select
                                         id="documento-proveedor"
@@ -285,18 +477,121 @@
                                 </div>
 
 
-                                <!-- OBSERVACIONES -->
+                            </div>
 
-                                <div class="form-group">
 
-                                    <label for="documento-observaciones">
-                                        Observaciones
-                                    </label>
 
-                                    <textarea
-                                        id="documento-observaciones"
-                                        rows="4"
-                                    ></textarea>
+                            <!-- =========================
+                                 PRODUCTOS
+                            ========================== -->
+
+                            <div class="document-details-section">
+
+
+                                <div class="section-header">
+
+                                    <div>
+
+                                        <h3>
+                                            Productos de la factura
+                                        </h3>
+
+                                        <p class="section-description">
+                                            Agrega los productos incluidos en la factura.
+                                        </p>
+
+                                    </div>
+
+
+                                    <button
+                                        type="button"
+                                        id="btn-agregar-detalle"
+                                    >
+                                        ➕ Agregar producto
+                                    </button>
+
+                                </div>
+
+
+
+                                <div class="table-container">
+
+                                    <table class="clients-table">
+
+
+                                        <thead>
+
+                                            <tr>
+
+                                                <th>
+                                                    Producto
+                                                </th>
+
+                                                <th>
+                                                    Cantidad
+                                                </th>
+
+                                                <th>
+                                                    Precio unitario
+                                                </th>
+
+                                                <th>
+                                                    Importe
+                                                </th>
+
+                                                <th>
+                                                    Acción
+                                                </th>
+
+                                            </tr>
+
+                                        </thead>
+
+
+
+                                        <tbody
+                                            id="detalles-container"
+                                        >
+
+                                        </tbody>
+
+
+
+                                        <tfoot>
+
+                                            <tr>
+
+                                                <td
+                                                    colspan="3"
+                                                    style="text-align: right;"
+                                                >
+
+                                                    <strong>
+                                                        TOTAL:
+                                                    </strong>
+
+                                                </td>
+
+
+                                                <td>
+
+                                                    <strong
+                                                        id="documento-total"
+                                                    >
+                                                        S/ 0.00
+                                                    </strong>
+
+                                                </td>
+
+
+                                                <td></td>
+
+                                            </tr>
+
+                                        </tfoot>
+
+
+                                    </table>
 
                                 </div>
 
@@ -304,7 +599,20 @@
                             </div>
 
 
-                            <!-- BOTONES -->
+
+                            <!-- =========================
+                                 MENSAJE
+                            ========================== -->
+
+                            <p
+                                id="documento-form-message"
+                            ></p>
+
+
+
+                            <!-- =========================
+                                 BOTONES
+                            ========================== -->
 
                             <div class="form-actions">
 
@@ -314,7 +622,7 @@
                                     class="btn-save"
                                     id="btn-guardar-documento"
                                 >
-                                    💾 Guardar documento
+                                    💾 Guardar factura
                                 </button>
 
 
@@ -330,19 +638,18 @@
                             </div>
 
 
-                            <p id="documento-form-message"></p>
-
-
                         </form>
 
 
                     </div>
 
 
-                    <!-- TABLA -->
+
+                    <!-- =========================
+                         TABLA DOCUMENTOS
+                    ========================== -->
 
                     <div class="table-container">
-
 
                         <table class="clients-table">
 
@@ -351,32 +658,61 @@
 
                                 <tr>
 
-                                    <th>ID</th>
+                                    <th>
+                                        ID
+                                    </th>
 
-                                    <th>Tipo</th>
+                                    <th>
+                                        Tipo
+                                    </th>
 
-                                    <th>Número</th>
+                                    <th>
+                                        Operación
+                                    </th>
 
-                                    <th>Fecha</th>
+                                    <th>
+                                        Número
+                                    </th>
 
-                                    <th>Moneda</th>
+                                    <th>
+                                        Fecha
+                                    </th>
 
-                                    <th>Cliente</th>
+                                    <th>
+                                        Moneda
+                                    </th>
 
-                                    <th>Proveedor</th>
+                                    <th>
+                                        Cliente
+                                    </th>
 
-                                    <th>Acciones</th>
+                                    <th>
+                                        Proveedor
+                                    </th>
+
+                                    <th>
+                                        Total
+                                    </th>
+
+                                    <th>
+                                        Acciones
+                                    </th>
 
                                 </tr>
 
                             </thead>
 
 
-                            <tbody id="documentos-container">
+
+                            <tbody
+                                id="documentos-container"
+                            >
 
                                 <tr>
 
-                                    <td colspan="8">
+                                    <td
+                                        colspan="10"
+                                    >
                                         Cargando documentos...
                                     </td>
 
@@ -386,7 +722,6 @@
 
 
                         </table>
-
 
                     </div>
 
@@ -403,12 +738,10 @@
     </div>
 
 
-    <!-- JAVASCRIPT -->
-
-    <script src="common.js"></script>
 
     <script src="documentos.js"></script>
-
+    <script>lucide.createIcons();</script>
+    
 
 </body>
 

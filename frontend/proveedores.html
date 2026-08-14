@@ -7,6 +7,8 @@
     <title>Proveedores - Sistema Comercial</title>
 
     <link rel="stylesheet" href="css/styles.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
 </head>
 
 <body>
@@ -18,30 +20,47 @@
             <h2>Sistema Comercial</h2>
 
             <nav>
-                <a href="index.html">🏠 Inicio</a>
-                <a href="clientes.html">👥 Clientes</a>
-                <a href="proveedores.html" class="active">🏭 Proveedores</a>
-                <a href="productos.html">📦 Productos</a>
-                <a href="documentos.html">🧾 Documentos</a>
+                <a href="index.html">
+                    <i data-lucide="house"></i>
+                    <span>Inicio</span>
+                </a>
+                <a href="clientes.html">
+                    <i data-lucide="users"></i>
+                    <span>Clientes</span>
+                </a>
+                <a href="proveedores.html" class="active">
+                    <i data-lucide="building-2"></i>
+                    <span>Proveedores</span>
+                </a>
+                <a href="productos.html">
+                    <i data-lucide="package"></i>
+                    <span>Productos</span>
+                </a>
+                <a href="documentos.html">
+                    <i data-lucide="file-text"></i>
+                    <span>Documentos</span>
+                </a>
             </nav>
 
-            <a href="#" class="logout">🚪 Cerrar sesión</a>
+        <div class="sidebar-footer">
+                <div class="sidebar-user">
+                    <i data-lucide="user"></i>
+                    <span>Usuario</span>
+                </div>
+
+            <a 
+                href="#"
+                 class="logout"
+            >
+                <i data-lucide="power"></i>
+                
+            </a>
+        </div>
 
         </aside>
 
 
         <main class="main-content">
-
-            <header class="topbar">
-
-                <h1>Proveedores</h1>
-
-                <div class="user-info">
-                    👤 Usuario
-                </div>
-
-            </header>
-
 
             <section class="dashboard">
 
@@ -241,6 +260,7 @@
 
     <script src="common.js"></script>
     <script src="proveedores.js"></script>
+    <script>lucide.createIcons();</script>
 
 </body>
 </html>
