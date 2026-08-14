@@ -285,7 +285,7 @@ async function cargarDocumentos() {
 
         const response =
             await fetch(
-                'http://127.0.0.1:8000/api/documentos/',
+                `${API_URL}/api/documentos/`,
                 {
                     method: 'GET',
 
@@ -361,7 +361,7 @@ async function cargarDocumentos() {
 
             const detallesResponse =
                 await fetch(
-                    'http://127.0.0.1:8000/api/detalle-documentos/',
+                    `${API_URL}/api/detalle-documentos/`,
                     {
                         method: 'GET',
 
@@ -632,7 +632,7 @@ async function cargarClientes() {
 
         const response =
             await fetch(
-                'http://127.0.0.1:8000/api/clientes/',
+                `${API_URL}/api/clientes/`,
                 {
                     method: 'GET',
 
@@ -752,7 +752,7 @@ async function cargarProveedores() {
 
         const response =
             await fetch(
-                'http://127.0.0.1:8000/api/proveedores/',
+                `${API_URL}/api/clientes/`,
                 {
                     method: 'GET',
 
@@ -871,7 +871,7 @@ async function cargarProductos() {
 
         const response =
             await fetch(
-                'http://127.0.0.1:8000/api/productos/',
+                `${API_URL}/api/productos/`,
                 {
                     method: 'GET',
 
@@ -1302,8 +1302,8 @@ async function crearEntidadRapida(
 
     const endpoint =
         tipo === 'cliente'
-            ? 'http://127.0.0.1:8000/api/clientes/'
-            : 'http://127.0.0.1:8000/api/proveedores/';
+            ? `${API_URL}/api/clientes/`
+            : `${API_URL}/api/proveedores/`;
 
 
     try {
@@ -2281,7 +2281,7 @@ async function crearProductoRapido(
 
         const response =
             await fetch(
-                'http://127.0.0.1:8000/api/productos/',
+                `${API_URL}/api/productos/`,
                 {
                     method: 'POST',
 
@@ -2619,7 +2619,7 @@ if (documentoForm) {
 
                     const response =
                         await fetch(
-                            'http://127.0.0.1:8000/api/documentos/',
+                            `${API_URL}/api/documentos/`,
                             {
                                 method: 'POST',
 
@@ -2674,7 +2674,7 @@ if (documentoForm) {
 
                         const detalleResponse =
                             await fetch(
-                                'http://127.0.0.1:8000/api/detalle-documentos/',
+                                `${API_URL}/api/detalle-documentos/`,
                                 {
                                     method: 'POST',
 
@@ -2772,7 +2772,7 @@ if (documentoForm) {
 
                 const response =
                     await fetch(
-                        `http://127.0.0.1:8000/api/documentos/${documentoEditandoId}/`,
+                        `${API_URL}/api/documentos/${documentoEditandoId}/`,
                         {
                             method: 'PATCH',
 
@@ -2837,7 +2837,7 @@ if (documentoForm) {
 
                         const detalleResponse =
                             await fetch(
-                                `http://127.0.0.1:8000/api/detalle-documentos/${detalle.id}/`,
+                                `${API_URL}/api/detalle-documentos/${detalle.id}/`,
                                 {
                                     method: 'PATCH',
 
@@ -2893,7 +2893,7 @@ if (documentoForm) {
 
                         const detalleResponse =
                             await fetch(
-                                'http://127.0.0.1:8000/api/detalle-documentos/',
+                                `${API_URL}/api/detalle-documentos/`,
                                 {
                                     method: 'POST',
 
@@ -2960,7 +2960,7 @@ if (documentoForm) {
 
                         const deleteResponse =
                             await fetch(
-                                `http://127.0.0.1:8000/api/detalle-documentos/${detalleId}/`,
+                                `${API_URL}/api/detalle-documentos/${detalleId}/`,
                                 {
                                     method: 'DELETE',
 
@@ -3073,7 +3073,7 @@ document.addEventListener(
 
             const response =
                 await fetch(
-                    `http://127.0.0.1:8000/api/documentos/${documentoId}/`,
+                    `${API_URL}/api/documentos/${documentoId}/`,
                     {
                         method: 'GET',
 
@@ -3244,7 +3244,7 @@ async function cargarDetallesDocumento(
 
         const response =
             await fetch(
-                'http://127.0.0.1:8000/api/detalle-documentos/',
+                `${API_URL}/api/detalle-documentos/`,
                 {
                     method: 'GET',
 
@@ -3383,7 +3383,7 @@ document.addEventListener(
 
             const response =
                 await fetch(
-                    `http://127.0.0.1:8000/api/documentos/${documentoId}/`,
+                    `${API_URL}/api/documentos/${documentoId}/`,
                     {
                         method: 'DELETE',
 
@@ -3730,7 +3730,7 @@ async function buscarProductoVisor() {
 
         const productosResponse =
             await fetch(
-                'http://127.0.0.1:8000/api/productos/',
+                `${API_URL}/api/productos/`,
                 {
                     method: 'GET',
 
@@ -3880,7 +3880,7 @@ async function buscarProductoVisor() {
 
         const documentosResponse =
             await fetch(
-                'http://127.0.0.1:8000/api/documentos/',
+                `${API_URL}/api/documentos/`,
                 {
                     method: 'GET',
 
@@ -3925,7 +3925,7 @@ async function buscarProductoVisor() {
 
         const detallesResponse =
             await fetch(
-                'http://127.0.0.1:8000/api/detalle-documentos/',
+                `${API_URL}/api/detalle-documentos/`,
                 {
                     method: 'GET',
 

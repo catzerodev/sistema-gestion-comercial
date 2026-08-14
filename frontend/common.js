@@ -1,3 +1,5 @@
+const API_URL = 'https://sistema-gestion-comercial.onrender.com';
+
 // =========================
 // CERRAR SESIÓN
 // =========================

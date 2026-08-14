@@ -1,3 +1,4 @@
+const API_URL = 'https://sistema-gestion-comercial.onrender.com';
 const loginForm = document.getElementById('login-form');
 
 if (loginForm) {
@@ -13,7 +14,7 @@ if (loginForm) {
 
         try {
             const response = await fetch(
-                'http://127.0.0.1:8000/api/usuarios/login/',
+                `${API_URL}/api/usuarios/login/`,
                 {
                     method: 'POST',
                     headers: {

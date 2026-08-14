@@ -22,7 +22,7 @@ async function cargarProveedores() {
     try {
 
         const response = await fetch(
-            'http://127.0.0.1:8000/api/proveedores/',
+            `${API_URL}/api/proveedores/`,
             {
                 method: 'GET',
                 headers: {
@@ -223,8 +223,8 @@ if (proveedorForm) {
         try {
 
             const url = esEdicion
-                ? `http://127.0.0.1:8000/api/proveedores/${proveedorEditandoId}/`
-                : 'http://127.0.0.1:8000/api/proveedores/';
+                ? `${API_URL}/api/proveedores/${proveedorEditandoId}/`
+                : `${API_URL}/api/proveedores/`;
 
             const method = esEdicion
                 ? 'PATCH'
@@ -318,7 +318,7 @@ document.addEventListener('click', async function (event) {
     try {
 
         const response = await fetch(
-            `http://127.0.0.1:8000/api/proveedores/${proveedorId}/`,
+            `${API_URL}/api/proveedores/${proveedorId}/`,
             {
                 method: 'GET',
 
@@ -423,7 +423,7 @@ document.addEventListener('click', async function (event) {
     try {
 
         const response = await fetch(
-            `http://127.0.0.1:8000/api/proveedores/${proveedorId}/`,
+            `${API_URL}/api/proveedores/${proveedorId}/`,
             {
                 method: 'DELETE',
 

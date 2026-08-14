@@ -22,7 +22,7 @@ async function cargarProductos() {
     try {
 
         const response = await fetch(
-            'http://127.0.0.1:8000/api/productos/',
+            `${API_URL}/api/productos/`,
             {
                 method: 'GET',
 
@@ -279,8 +279,8 @@ if (productoForm) {
             try {
 
                 const url = productoEditandoId
-                    ? `http://127.0.0.1:8000/api/productos/${productoEditandoId}/`
-                    : 'http://127.0.0.1:8000/api/productos/';
+                    ? `${API_URL}/api/productos/${productoEditandoId}/`
+                    : `${API_URL}/api/productos/`;
 
 
                 const method = productoEditandoId
@@ -405,7 +405,7 @@ document.addEventListener(
         try {
 
             const response = await fetch(
-                `http://127.0.0.1:8000/api/productos/${productoId}/`,
+                `${API_URL}/api/productos/${productoId}/`,
                 {
                     method: 'GET',
 
@@ -552,7 +552,7 @@ document.addEventListener(
         try {
 
             const response = await fetch(
-                `http://127.0.0.1:8000/api/productos/${productoId}/`,
+                `${API_URL}/api/productos/${productoId}/`,
                 {
                     method: 'DELETE',
 

@@ -16,7 +16,7 @@ async function cargarClientes() {
     try {
 
         const response = await fetch(
-            'http://127.0.0.1:8000/api/clientes/',
+            `${API_URL}/api/clientes/`,
             {
                 method: 'GET',
                 headers: {
@@ -197,13 +197,12 @@ if (clienteForm) {
 
         try {
 
-            let url = 'http://127.0.0.1:8000/api/clientes/';
+            let url = `${API_URL}/api/clientes/`;
             let method = 'POST';
 
             if (clienteEditandoId !== null) {
 
-                url =
-                    `http://127.0.0.1:8000/api/clientes/${clienteEditandoId}/`;
+                url = `${API_URL}/api/clientes/${clienteEditandoId}/`;
 
                 method = 'PATCH';
 
@@ -306,7 +305,7 @@ document.addEventListener('click', async function (event) {
     try {
 
         const response = await fetch(
-            `http://127.0.0.1:8000/api/clientes/${clienteId}/`,
+            `${API_URL}/api/clientes/${clienteId}/`,
             {
                 method: 'DELETE',
 
@@ -381,7 +380,7 @@ document.addEventListener('click', async function (event) {
     try {
 
         const response = await fetch(
-            `http://127.0.0.1:8000/api/clientes/${clienteId}/`,
+            `${API_URL}/api/clientes/${clienteId}/`,
             {
                 method: 'GET',
                 headers: {
